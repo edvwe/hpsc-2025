@@ -63,6 +63,8 @@ for n in range(nt):
     v[:, -1] = 0
     plt.contourf(X, Y, p, alpha=0.5, cmap=plt.cm.coolwarm)
     plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
+    plt.title(f'Python, n = {n}')
     plt.pause(.01)
+
     plt.clf()
 plt.show()

@@ -4,6 +4,7 @@ import numpy as np
 NX = 41
 NY = 41
 
+
 def main():
     x = np.linspace(0, 2, NX)
     y = np.linspace(0, 2, NY)
@@ -15,13 +16,13 @@ def main():
 
     # *.dat contain a line for every timestep with the Z-traversal of u,v, and p
     # values are space-separated
-    with open('u.dat', 'r') as f:
+    with open("u.dat", "r") as f:
         uraw = f.readlines()
-    with open('v.dat', 'r') as f:
+    with open("v.dat", "r") as f:
         vraw = f.readlines()
-    with open('p.dat', 'r') as f:
+    with open("p.dat", "r") as f:
         praw = f.readlines()
-    
+
     for n in range(len(uraw)):
         plt.clf()
         u_flattened = [float(val) for val in uraw[n].strip().split() if val]
@@ -36,10 +37,10 @@ def main():
 
         plt.contourf(X, Y, p, alpha=0.5, cmap=plt.cm.coolwarm)
         plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
-        plt.title(f'C++, n = {n}')
-        plt.pause(.01)
-    plt.show()
+        plt.title(f"C++, n = {n}")
+        plt.waitforbuttonpress()
 
-if __name__ == '__main__':
+plt.show()
+
+if __name__ == "__main__":
     main()
-

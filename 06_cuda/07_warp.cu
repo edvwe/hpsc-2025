@@ -23,6 +23,9 @@ int main(void) {
   for (int i=0; i<N; i++) a[i] = 1;
   reduction<<<N/M,M>>>(sum, a);
   cudaDeviceSynchronize();
+  for (int i=0; i<N; i++) a[i] = 2;
+  reduction<<<N/M,M>>>(sum, a);
+  cudaDeviceSynchronize();
   printf("%d\n",sum);
   cudaFree(a);
 }
