@@ -248,6 +248,8 @@ int main() {
     }
   }
   auto toc = std::chrono::steady_clock::now();
+  double time = std::chrono::duration<double>(toc - tic).count();
+  printf("time = %lf\n", time);
 
   ufile.close();
   vfile.close();
@@ -260,7 +262,4 @@ int main() {
   cudaFree(un);
   cudaFree(vn);
   cudaFree(pn);
-
-  double time = std::chrono::duration<double>(toc - tic).count();
-  printf("time = %lf\n", time);
 }
